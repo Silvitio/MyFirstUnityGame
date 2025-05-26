@@ -1,16 +1,29 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour
 {
     public float moveSpeed = 5f;
+    private Rigidbody rb;
+    private Vector3 movement;
 
-    private void Update()
+    void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+        rb.freezeRotation = true;
+    }
+
+    void Update()
     {
         float moveX = Input.GetAxis("Horizontal");
         float moveZ = Input.GetAxis("Vertical");
 
-        Vector3 movement = new Vector3(moveX, 0, moveZ) * moveSpeed * Time.deltaTime;
+        movement = new Vector3(moveX, 0f, moveZ).normalized * moveSpeed;
+    }
 
-        transform.Translate(movement, Space.World);
+    void FixedUpdate()
+    {
+        Vector3 newPosition = rb.position + movement * Time.fixedDeltaTime;
+        rb.MovePosition(newPosition);
     }
 }
