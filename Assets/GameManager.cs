@@ -1,10 +1,10 @@
 using UnityEngine;
-using UnityEngine.UI;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-    public int score = 0;
-    public Text scoreText;
+    public int score = 0;               // Счётчик количества собранных объектов
+    public TextMeshProUGUI scoreText;   // Ссылка на компонент TextMeshPro
 
     void Start()
     {
