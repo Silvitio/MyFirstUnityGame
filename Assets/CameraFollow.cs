@@ -3,7 +3,7 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour {
     public Transform player;            // Цель слежения
     public Vector3 offset;              // Смещение камеры относительно player
-    public float tiltAngle = 30f;       // Угол наклона камеры вниз
+    public float tiltAngle = 50f;       // Угол наклона камеры вниз
 
     private void LateUpdate() {
         Vector3 desiredPosition = player.position + offset;
