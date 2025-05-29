@@ -3,7 +3,7 @@ using UnityEngine;
 public class ThirdPersonController : MonoBehaviour
 {
     public float moveSpeed = 5f;
-    public float mouseSensitivity = 100f;
+    public float mouseSensitivity = 2000f;
     public Transform cameraPivot; // точка, вокруг которой крутится камера (обычно объект-пустышка над игроком)
     public Transform cameraTransform; // сама камера
 
