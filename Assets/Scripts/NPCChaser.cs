@@ -3,8 +3,9 @@ using UnityEngine.AI;
 
 public class NPCChaser : MonoBehaviour
 {
-    public Transform player;        // Игрок, за которым будет следовать NPC
-    private NavMeshAgent agent;     // NavMeshAgent для движения NPC
+    public Transform player;
+    private NavMeshAgent agent;
+    public GameManager gameManager;
 
     void Start()
     {
@@ -16,6 +17,17 @@ public class NPCChaser : MonoBehaviour
         if (player != null)
         {
             agent.SetDestination(player.position);
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            if (gameManager != null)
+                gameManager.ShowGameOver();
+
+            agent.isStopped = true;
         }
     }
 }
